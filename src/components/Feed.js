@@ -19,17 +19,15 @@ class Feed extends Component {
   constructor(props){
     super(props);
     this.state = {
-      recipes: [{title: "apilimit"}],
+      recipes: [],
     };
     this.getRecipes = this.getRecipes.bind(this);
+    this.getRecipes(1);
   }
   
   getRecipes(page) {
     axios.get(`${SEARCH_PATH_BASE}page=${page}`)
         .then(response => {
-          response.status === 200 ? 
-          this.setState({recipes: [{title: "apilimit"}]}) 
-          :
           this.setState({recipes: response.data.recipes});
         })
         .catch(error => console.log(error));
@@ -37,7 +35,17 @@ class Feed extends Component {
 
   render(){
     return (
-      <InfiniteScroll
+      <div className="feed">
+        {this.state.recipes !== undefined 
+          ? this.state.recipes.map((recipe, index) => (
+            <Article key={index} data={recipe} />
+          )) 
+          :
+          <div>limit reached</div>
+          }
+      </div>
+      )
+      {/* <InfiniteScroll
         pageStart={0}
         loadMore={this.getRecipes}
         hasMore={true}
@@ -45,14 +53,16 @@ class Feed extends Component {
       >
         {
           <div className="feed">
-            { this.state.recipes.map((recipe, index) => (
+            {this.state.recipes !== undefined 
+            ? this.state.recipes.map((recipe, index) => (
               <Article key={index} data={recipe} />
-            )) }
+            )) 
+            :
+            <div>limit reached</div>
+            }
           </div>
         }
-      </InfiniteScroll>
-      
-    )
+      </InfiniteScroll> */}    
   }
 }
 
