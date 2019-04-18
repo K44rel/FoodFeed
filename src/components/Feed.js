@@ -7,7 +7,7 @@ const RECIPE_PATH_BASE = "https://www.food2fork.com/api/get";
 
 const Article = ({data}) => {
   return (
-    <a className="recipe" href={data.publisher_url} target="_blank">
+    <a className="recipe" href={data.source_url} target="_blank">
       <img className="recipe__image" src={data.image_url} alt={data.title}/>
       <div className="recipe__title">{data.title}</div>
       <div className="recipe__source">From: {data.publisher}</div>
