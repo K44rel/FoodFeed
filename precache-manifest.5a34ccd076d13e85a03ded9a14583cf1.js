@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/FoodFeed/static/css/main.a13ba511.chunk.css"
   },
   {
-    "revision": "14825b61ce048e4aa46dbcb62f4f9785",
+    "revision": "c38a8ed004aa54f1e551fca4c0d9e988",
     "url": "/FoodFeed/index.html"
   }
 ];
